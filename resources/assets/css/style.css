@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Overlock+SC');
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+
+[c-red] {
+  color: red;
+}
+[c-gray] {
+  color: rgba(0, 0, 0, .7);
+}
+[m0-auto] {
+  margin: 0 auto;
+}
+[text-align-center] {
+  text-align: center;
+}
+[uppercase] {
+  text-transform: uppercase;
+}
+[center] {
+  margin: 0 auto;
+}
+a {
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.btn-none {
+  cursor: progress;
+  padding: .5rem;
+  border-radius: 3px;
+  background:transparent;
+  border:none;
+  transition: all .2s ease-in-out;
+}
+.btn-none:hover {
+  background: #4B4B4B;
+  color: #fff;
+}
+
+.logo {
+  font-family: 'Overlock SC', cursive;
+  font-size: 1.25em;
+}
+.program {
+  font-family: 'Abel', sans-serif;
+  font-size: 1.25em;
+}
+.nav-link:visited {
+  background:#000;
+}
+.nav-item .dropdown-menu {
+  right: 1% !important;
+}
+.nav-dropdown {
+  margin: 10px 0;
+  width: 15rem;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  overflow-y: auto;
+}
+
+.confirm-class {
+  position: relative;
+}
+.confirm-class .col-md-12 {
+  padding:0;
+}
+.confirm-class .bottom-0 {
+  position: absolute;
+  bottom: 0;
+  left:0;
+}
+.confirm-class .bot-btn {
+  border-radius: 0;
+  width: 100%;
+}
+
+.each-profile-menu {
+  display: flex;
+
+  color: #fff;
+}
+.each-profile-menu .content {
+  align-self: center;
+}
+
+
+
+/* HOME */
+.gr-1 {
+  background: linear-gradient(170deg, #c86dd7 0%, #4A148C 100%);
+}
+.gr-2 {
+  background: linear-gradient(170deg, #B4EC51 0%, #429321 100%);
+}
+
+* {
+  transition: 0.5s;
+}
+
+.h-100 {
+  height: 100vh !important;
+}
+
+.align-middle {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.column {
+  margin-top: 3rem;
+  padding-left: 3rem;
+}
+.column:hover {
+  padding-left: 0;
+}
+.column:hover .program-card .txt {
+  margin-left: 1rem;
+}
+.column:hover .program-card .txt h1,
+.column:hover .program-card .txt p {
+  color: white;
+  opacity: 1;
+}
+.column:hover a {
+  color: white;
+}
+.column:hover a:after {
+  width: 10%;
+}
+
+.program-card {
+  min-height: 170px;
+  margin: 0;
+  padding: 1.7rem 1.2rem;
+  border: none;
+  border-radius: 0;
+  color: black;
+  letter-spacing: 0.05rem;
+  font-family: "Oswald", sans-serif;
+  box-shadow: 0 0 33px rgba(0, 0, 0, 0.5);
+}
+.program-card .txt {
+  margin-left: -3rem;
+  z-index: 1;
+}
+.program-card .txt h1 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.program-card .txt p {
+  font-size: 0.7rem;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0rem;
+  margin-top: 33px;
+  opacity: 0;
+  color: white;
+}
+.program-card a {
+  z-index: 3;
+  font-size: 0.7rem;
+  color: black;
+  margin-left: 1rem;
+  position: relative;
+  bottom: -0.5rem;
+  text-transform: uppercase;
+}
+.card a:after {
+  content: "";
+  display: inline-block;
+  height: 0.5em;
+  width: 0;
+  margin-right: -100%;
+  margin-left: 10px;
+  border-top: 1px solid white;
+  transition: 0.5s;
+}
+.program-card .ico-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.program-card i {
+  position: relative;
+  right: -50%;
+  top: 60%;
+  font-size: 12rem;
+  line-height: 0;
+  opacity: 0.2;
+  color: white;
+  z-index: 0;
+}
+
+
+.soal-data {
+  padding: 2rem;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.btn-submit {
+  background:transparent;
+  border:1px dashed black;
+  color:rgba(0,0,0,.8);
+  transition: all .2s ease-in-out;
+}
+.btn-submit:hover {
+  background-image:repeating-radial-gradient(#fff, #F5F8FA);
+}
+
+
+
+
+
+/* HALAMAN SOAL */
+.noSoal {
+  border-radius: 100%;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.noSoal span {
+  transform: translate(-50%, -55%);
+  position: absolute;
+}
+.noSoal:visited {
+  background:#4B4B4B;
+}
+.noSoal:visited span {
+  color:#fff;
+}
+.noSoal:active {
+  background:#4B4B4B;
+}
+.noSoal:active span {
+  color:#fff;
+}
