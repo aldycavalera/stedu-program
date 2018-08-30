@@ -9,4 +9,4 @@ git clone https://github.com/aldycavalera/stedu-program.git
 ## Versi
 v0.190 - Development
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
