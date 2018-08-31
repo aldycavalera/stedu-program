@@ -22,7 +22,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
     public $timestamps = true;
     const CREATED_AT = 'creation_date';
     const UPDATED_AT = 'last_update';
