@@ -4,6 +4,8 @@
         <title>The example shows how to create a Quiz, jQuery Survey Library Example</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="{{ asset('/resources/assets/js/bootstrap/jquery.min.js') }}"></script>
+        <script src="{{ asset('/resources/assets/js/bootstrap/popper.min.js') }}"></script>
+        <script src="{{ asset('/resources/assets/js/bootstrap/bootstrap4.js') }}" defer></script>
         <script src="{{ asset('/resources/assets/js/survey.jquery.js') }}"></script>
         <script src="{{ asset('/resources/assets/js/iziModal.min.js') }}"></script>
 
@@ -11,6 +13,7 @@
         <link rel="stylesheet" href="{{ asset('/resources/assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/resources/assets/css/survey.css') }}">
         <link rel="stylesheet" href="{{ asset('/resources/assets/css/iziModal.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/resources/assets/css/animate.css') }}">
         <link rel="stylesheet" href="{{ asset('/resources/assets/css/fontawesome.min.css') }}">
         <style media="screen">
           h4 {
@@ -80,43 +83,82 @@
           </div>
       </nav>
 
-      <div id="modalSesi" class="iziModal" @if (session('isError')==true) data-iziModal-subtitle="{{session('isError')}}" @endif>
-        <form method="post" autocomplete="off" action="{{ route('cekSesi') }}">
-          {{ csrf_field() }}
-          <div class="container-fluid my-3">
-            <div class="form-group">
-              <input type="text" style="text-align:center" class="form-control" name="sesiKey"
-              maxlength="6" minlength="6" placeholder="6 Digit Kode sesi">
-              <button type="button" class="btn" hidden></button>
-            </div>
-          </div>
-        </form>
+<div class="stickIt"></div>
+@if (!session('url'))
+  <div id="modalSesi" class="iziModal" @if (session('isError')==true) data-iziModal-subtitle="{{session('isError')}}" @endif>
+    <form method="post" autocomplete="off" id="sesiForm" action="{{ route('cekSesi') }}">
+      {{ csrf_field() }}
+      <div class="container-fluid my-3">
+        <div class="form-group">
+          <input type="text" id="sesiKey" style="text-align:center" class="form-control" name="sesiKey"
+          maxlength="6" minlength="6" placeholder="6 Digit Kode sesi">
+          <button type="button" class="btn" hidden></button>
+        </div>
       </div>
-      <div style="height:80vh;display:flex; width:100vw">
-        <center style="align-self:center; margin:0 auto">
-          <h6 style="font-family:sans-serif; font-weight:300; color:gray">Loading soal...</h6>
-          <img src="https://www.dundalkleisurecraft.com/wp-content/uploads/2018/01/loading-1.gif" alt="" width="50">
-        </center>
-      </div>
-    </body>
-
-    <script>
-    $("#modalSesi").iziModal({
-      title: 'Masukan Kode Sesi',
-      headerColor: '#4A148C',
-      top: '5%',
-      focusInput:true,
-      autoOpen:1,
-      closeOnEscape: false,
-      closeButton: false,
-      icon: 'fa fa-exclamation',
-      // onClosing: function(){
-      //   alert('alert');
-      // },
-      //
-      onClosed: function(){
-        window.location.href = '<?= route('home'); ?>';
-      },
+    </form>
+  </div>
+  <script>
+  $("#modalSesi").iziModal({
+    title: 'Masukan Kode Sesi',
+    headerColor: '#4A148C',
+    top: '5%',
+    focusInput:true,
+    autoOpen:1,
+    closeOnEscape: false,
+    closeButton: false,
+    overlay:false,
+    appendToOverlay: '.stickIt',
+    icon: 'fa fa-exclamation',
+    onClosed: function(){
+      window.location.href = '<?= route('home'); ?>';
+    },
+  });
+  </script>
+@endif
+{{-- LOADING --}}
+<div id="loading" style="height:80vh;display:flex; width:100vw">
+  <center style="align-self:center; margin:0 auto">
+    <h6 style="font-family:sans-serif; font-weight:300; color:gray">Memuat soal...</h6>
+    <img src="{{ asset('/resources/assets/img/loading.gif') }}" alt="" width="50">
+  </center>
+</div>
+{{-- SOAL CONTAINER --}}
+@if (session('url'))
+  <div id="soal">
+  </div>
+  <script>
+    $.get('<?= session('url') ?>', function(data) {
+        $("#soal").addClass("animated fadeIn");
+        $("#soal").html(data);
+        $('#loading').remove();
     });
-    </script>
+  </script>
+@endif
+<div class="" id="soal"></div>
+</body>
+
+  <script>
+  // $("#sesiForm").submit(function(event) {
+  //   /* stop form from submitting normally */
+  //   event.preventDefault();
+  //   /* get some values from elements on the page: */
+  //   var $form = $( this );
+  //   var url = $form.attr( "action" );
+  //   /* Send the data using post */
+  //   var posting = $.ajax({
+  //           url: url,
+  //           type: 'POST',
+  //           data: $('#sesiForm').serialize(),
+  //           async: false
+  //       });
+  //   posting.done(function( data ) {
+  //     $('#modalSesi').remove();
+  //     $.get('', function(data) {
+  //         $("#soal").addClass("animated fadeIn");
+  //         $("#soal").html(data);
+  //         $('#loading').remove();
+  //     });
+  //   });
+  // });
+  </script>
 </html>

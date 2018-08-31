@@ -27,7 +27,7 @@ class ApiHasilController extends Controller
         'created_at' => date("Y-m-d H:i:s")
       ]);
       if ($hasil) {
-        return redirect()->route('profile');
+        return redirect()->route('ownProfile');
       } else {
         dd('Ooops');
       }

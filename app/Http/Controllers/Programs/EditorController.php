@@ -33,13 +33,17 @@ class EditorController extends Controller
     public function show($mapel, $soalId)
     {
       $getSoal   = SoalModel::find($soalId);
-      $getMapel  = MapelModel::find($getSoal->mapel_id);
+      $getMapel  = MapelModel::all();
+      foreach ($getMapel as $gMapel) {
+        if (strtolower($gMapel['nama_mapel']) == $mapel) {
+          $mapelId = $gMapel->id;
+        }
+      }
       $userClass = UserClass::find(Auth::id());
-
       $returnData = array(
         'Soal'   => json_decode($getSoal),
         'Mapel'  => $mapel,
-        'MapelId'=> $getMapel->id,
+        'MapelId'=> $mapelId,
         'SoalId' => $soalId
       );
       if ($userClass->status == '0') {

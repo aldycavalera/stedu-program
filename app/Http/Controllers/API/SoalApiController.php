@@ -25,11 +25,29 @@ class SoalApiController extends Controller
 
     public function updateSoal(Request $request)
     {
-      $Soal = SoalModel::find($request->soal_id);
-      $Soal->mapel_id   = $request->mapel_id;
-      $Soal->updated_at = date("Y-m-d H:i:s");
-      $Soal->soal       = $request->soalJSON;
-      $Soal->save();
-      return redirect()->back()->with('status', 'updated');
+      // $Mapel = MapelModel::find($request->mapel_id);
+      $getSoal  = SoalModel::all();
+      foreach ($getSoal as $gSoal) {
+        if ($gSoal->mapel_id == $request->mapel_id)
+          $isExist = true;
+        else
+          $isExist = false;
+      }
+      if ($isExist == false) {
+          $Soal = SoalModel::create([
+            'sesi_id'  =>2, // ganti!
+            'mapel_id' => $request->mapel_id,
+            'updated_at' => date("Y-m-d H:i:s"),
+            'soal' => $request->soalJSON
+          ]);
+          return redirect()->back()->with('status', 'created');
+      } else {
+        $Soal = SoalModel::find($request->soal_id);
+        $Soal->mapel_id   = $request->mapel_id;
+        $Soal->updated_at = date("Y-m-d H:i:s");
+        $Soal->soal       = $request->soalJSON;
+        $Soal->save();
+        return redirect()->back()->with('status', 'updated');
+      }
     }
 }

@@ -30,17 +30,20 @@ class SesiController extends Controller
   public function cekSesi(Request $request)
   {
     // ambil semua sesi ditabel cbt_sesi
-    $getSesi = SesiModel::all();
-    //loop
-    foreach ($getSesi as $sesi) {
-      // jika sesi sama dengan diinput user
-      if ($sesi->sesi_key == $request->sesiKey && $sesi->status=='active') {
+    $getSesi = SesiModel::where('sesi_key', $request->sesiKey)->get();
+    if (isset($getSesi[0])) {
+      $getSesi = $getSesi[0];
+      if ($getSesi->sesi_key == $request->sesiKey && $getSesi->status=='active') {
         //redirect ke soal
-        $mapel  = MapelModel::find($sesi->mapel_id)->nama_mapel;
-        $soalId = SoalModel::find($sesi->soal_id)->id;
-        return redirect('cbt/'.strtolower($mapel).'/'.$soalId);
+        $mapel  = MapelModel::find($getSesi->mapel_id)->nama_mapel;
+        $soalId = SoalModel::find($getSesi->soal_id)->id;
+        $url    = url('cbt/'.strtolower($mapel).'/'.$soalId);
+        return redirect()->back()->with('url',$url);
+      } else {
+       return redirect()->back()->with('isError','Sesi tidak ditemukan');
       }
-      return redirect()->back()->with('isError','Sesi tidak ditemukan');
+    } else {
+     return redirect()->back()->with('isError','Sesi tidak ditemukan');
     }
 
   }
