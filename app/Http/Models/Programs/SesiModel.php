@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SesiModel extends Model
 {
-    protected $fillable = ['mapel_id', 'class_id','sesi_key'];
+    protected $fillable = ['mapel_id', 'class_id','sesi_key','soal_id','status'];
     protected $table = 'cbt_sesi';
 
     public $timestamps  = true;

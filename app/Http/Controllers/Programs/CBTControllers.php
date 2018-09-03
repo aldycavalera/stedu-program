@@ -54,7 +54,6 @@ class CBTControllers extends Controller
       if (!$getSoal) {
         $getSoal = '{"pages": [{"name": "page1"}],"questionStartIndex": "1"}';
       }
-
       $returnData = array(
         'wasDoing' => $wasDoing,
         'Mapel'  => $mapel,

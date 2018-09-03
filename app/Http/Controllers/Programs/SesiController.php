@@ -43,7 +43,7 @@ class SesiController extends Controller
        return redirect()->back()->with('isError','Sesi tidak ditemukan');
       }
     } else {
-     return redirect()->back()->with('isError','Sesi tidak ditemukan');
+      return redirect()->back()->with('isError','Sesi tidak ditemukan');
     }
 
   }

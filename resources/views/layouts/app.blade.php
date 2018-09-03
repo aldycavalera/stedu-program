@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Stedu</title>
 
     <!-- Scripts -->
     <script src="{{ asset('/resources/assets/js/bootstrap/jquery.min.js') }}"></script>
@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     {{-- FONT IMPORT --}}
     <style>
-      
+
     </style>
 
     <!-- Styles -->

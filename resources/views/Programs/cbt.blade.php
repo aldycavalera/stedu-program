@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>The example shows how to create a Quiz, jQuery Survey Library Example</title>
+        <title>CBT - Ulangan Harian</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="{{ asset('/resources/assets/js/bootstrap/jquery.min.js') }}"></script>
         <script src="{{ asset('/resources/assets/js/survey.jquery.js') }}"></script>
@@ -120,9 +120,7 @@ Survey
     .applyTheme("default");
 
 var json = <?= $Soal ?>;
-
 window.survey = new Survey.Model(json);
-
 survey
     .onComplete
     .add(function (result) {
@@ -156,7 +154,6 @@ survey
 $("#surveyElement").Survey({model: survey, onCurrentPageChanged: doOnCurrentPageChanged});
 
 doOnCurrentPageChanged(survey);
-survey.showTitle = false;
 </script>
     </body>
 </html>

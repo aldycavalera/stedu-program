@@ -26,11 +26,18 @@ Route::namespace('Programs')->group(function () {
   Route::get('/cbt', 'SesiController@index')->name('sesi');
   Route::post('/cbt/cekSesi', 'SesiController@cekSesi')->name('cekSesi');
   Route::get('/cbt/{mapel}/{soalId}', 'CBTControllers@show')->name('uhbk');
+  Route::post('/getURI', 'EditorController@geturi')->name('getEditorURL');
   Route::get('/cbt/editor/{mapel}/{soalId}', 'EditorController@show');
+  Route::get('/cbt/editor', 'EditorController@index')->name('editor');
   // Route::post('/cbt/createSoal/{all}', 'SoalControllers@create');
 });
 
 Route::namespace('API')->group(function () {
+  Route::get('/getAllSoal', 'SoalApiController@getAllSoal');
+  Route::get('/getAllSesi', 'SoalApiController@getAllSesi')->name('getAllSesi');
+  Route::get('/getAllMapel', 'SoalApiController@getAllMapel')->name('getAllMapel');
+  Route::post('/addSoal','SoalApiController@addSoal')->name('addSoal');
+  Route::get('/getAllSoal', 'SoalApiController@getAllSoal')->name('getAllSoal');
   Route::get('/getSoal/{mapel}/{soalId}', 'SoalApiController@getSoal')->name('getSoal');
   Route::post('/postHasil', 'ApiHasilController@create')->name('postHasil');
   Route::post('/updateSoal', 'SoalApiController@updateSoal')->name('updateSoal');

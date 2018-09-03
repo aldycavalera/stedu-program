@@ -26,7 +26,16 @@ class EditorController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+    * Untuk halaman editor jika mapel & soalId belum dibuat
+    * Route : /editor
+    */
+    public function index()
+    {
+        return view('Programs.editorIndex');
+    }
+
+    /**
+     * untuk halaman editor jika mapel & soalId sudah dibuat
      *
      * @return \Illuminate\Http\Response
      */
@@ -50,5 +59,13 @@ class EditorController extends Controller
         return redirect()->route('classes')->with('from', 'uhbk');
       }
         return view('Programs.editor', $returnData);
+    }
+
+    public function geturi(Request $request)
+    {
+      $soalId = $request->soal_id;
+      $mapel  = strtolower($request->mapel);
+      $url = url('cbt/editor/'.strtolower($mapel).'/'.$soalId);
+      return redirect()->back()->with('URL', $url);
     }
 }

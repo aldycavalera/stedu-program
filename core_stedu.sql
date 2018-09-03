@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2018 at 01:06 PM
+-- Generation Time: Sep 03, 2018 at 12:56 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `core.stedu`
 --
+CREATE DATABASE IF NOT EXISTS `core.stedu` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `core.stedu`;
 
 -- --------------------------------------------------------
 
@@ -45,7 +47,9 @@ CREATE TABLE `cbt_hasil` (
 --
 
 INSERT INTO `cbt_hasil` (`id`, `user_id`, `mapel_id`, `sesi_id`, `soal_id`, `jawaban`, `nilai`, `created_at`, `updated_at`) VALUES
-(2, 1, 1, 1, 1, '{}', NULL, NULL, NULL);
+(3, 1, 1, 1, 1, '{}', ' ', '2018-08-30 09:27:06', '2018-08-30 09:27:06'),
+(4, 1, 1, 1, 1, '{}', ' ', '2018-08-30 09:28:08', '2018-08-30 09:28:08'),
+(5, 1, 5, 1, 18, '{\"soal1\":\"Menyimak adalah\",\"soal2\":[\"item2\",\"item3\",\"item5\"],\"soal3\":\"Drama adalah \",\"soal4\":\"Gaada\",\"soal5\":\"item1\"}', ' ', '2018-09-01 20:13:20', '2018-09-01 20:13:20');
 
 -- --------------------------------------------------------
 
@@ -68,7 +72,19 @@ CREATE TABLE `cbt_mapel` (
 --
 
 INSERT INTO `cbt_mapel` (`id`, `class_key`, `kode_mapel`, `nama_mapel`, `KKM`, `created_at`, `updated_at`) VALUES
-(1, 'AIPV28', '000001', 'Kimia', 76, '2018-08-24 17:00:00', NULL);
+(1, 'MqP9iL', '000001', 'Kimia', 76, '2018-08-24 17:00:00', NULL),
+(2, 'OMXP01', '000002', 'Matematika', 75, '2018-08-29 17:00:00', NULL),
+(3, 'BasZsD', '000003', 'Bahasa Inggris', 78, '2018-08-29 17:00:00', NULL),
+(4, 'xOeXHL', '000004', 'Bahasa Sunda', 76, '2018-08-29 17:00:00', NULL),
+(5, 'pVHIBQ', '000005', 'Bahasa Indonesia', 78, '2018-08-29 17:00:00', NULL),
+(6, 'BV0eEu', '000006', 'PBO - Java', 76, '2018-08-29 17:00:00', NULL),
+(7, 'AIND0v', '000007', 'SQL', 76, '2018-08-29 17:00:00', NULL),
+(8, '0JVQAu', '000008', 'Kewirausahaan', 76, '2018-08-29 17:00:00', NULL),
+(9, 'KNcBm7', '000009', 'Pendidikan Lingkungan Hidup', 76, '2018-08-29 17:00:00', NULL),
+(10, '2Sqi2F', '000010', 'Fisika', 76, '2018-08-29 17:00:00', NULL),
+(11, 'kGvqNd', '000011', 'Ilmu Pengetahuan Sosial', 76, '2018-08-29 17:00:00', NULL),
+(12, 'LniTN2', '000012', 'Pendidikan Kewarga Negaraan', 76, '2018-08-29 17:00:00', NULL),
+(13, 'Bxu7aM', '000013', 'Pendidikan Agama Islam', 76, '2018-08-29 17:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +108,11 @@ CREATE TABLE `cbt_sesi` (
 --
 
 INSERT INTO `cbt_sesi` (`id`, `mapel_id`, `class_id`, `soal_id`, `sesi_key`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 'POLA0X', 'active', '2018-08-24 20:06:09', NULL);
+(1, 1, 1, 1, 'Mo8pLD', 'active', '2018-08-24 20:06:09', NULL),
+(2, 2, 1, 2, '6xMp7D', 'active', NULL, NULL),
+(9, 2, 1, 6, '5cQUzw', 'active', '2018-09-01 02:55:20', '2018-09-01 02:55:20'),
+(11, 6, 1, 17, 'ObuYzM', 'nonactive', '2018-09-01 07:02:01', '2018-09-01 07:02:01'),
+(12, 5, 1, 18, 'gXilG5', 'active', '2018-09-01 07:08:29', '2018-09-01 07:08:29');
 
 -- --------------------------------------------------------
 
@@ -114,7 +134,11 @@ CREATE TABLE `cbt_soal` (
 --
 
 INSERT INTO `cbt_soal` (`id`, `mapel_id`, `sesi_id`, `soal`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '{\r\n \"title\": \"Contoh soal\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"contohnya\",\r\n     \"title\": \"Contohnya :\",\r\n     \"correctAnswer\": \"item1\",\r\n     \"choices\": [\r\n      \"Iya\",\r\n      \"Tidak\"\r\n     ],\r\n     \"choicesOrder\": \"random\"\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page2\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question2\",\r\n     \"title\": \"Boleh makan ?\",\r\n     \"correctAnswer\": \"item3\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"Boleh\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Tidak\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Terserah\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page3\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question3\",\r\n     \"title\": \"Suka ngoding ?\",\r\n     \"correctAnswer\": \"item3\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"Tidak\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Ngga\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Lah ?\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page4\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question4\",\r\n     \"title\": \"Oke\",\r\n     \"correctAnswer\": \"item1\",\r\n     \"choices\": [\r\n      \"item1\",\r\n      \"item2\",\r\n      \"item3\"\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page5\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question5\",\r\n     \"title\": \"Ngantuk gak ?\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"Ngga\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Iya\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Biasa aja\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page6\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"checkbox\",\r\n     \"name\": \"question6\",\r\n     \"choices\": [\r\n      \"item1\",\r\n      \"item2\",\r\n      \"item3\"\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page7\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"dropdown\",\r\n     \"name\": \"question7\",\r\n     \"choices\": [\r\n      \"item1\",\r\n      \"item2\",\r\n      \"item3\"\r\n     ]\r\n    }\r\n   ]\r\n  }\r\n ],\r\n \"questionStartIndex\": \"1\",\r\n \"maxTimeToFinish\": 15,\r\n \"showTimerPanel\": \"top\",\r\n \"showTimerPanelMode\": \"survey\"\r\n}', NULL, '2018-08-28 22:37:10');
+(1, 1, 1, '{\r\n \"title\": \"Contoh soal\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"contohnya\",\r\n     \"title\": \"Contohnya :\",\r\n     \"correctAnswer\": \"item1\",\r\n     \"choices\": [\r\n      \"Iya\",\r\n      \"Tidak\"\r\n     ],\r\n     \"choicesOrder\": \"random\"\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page2\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question2\",\r\n     \"title\": \"Boleh makan ?\",\r\n     \"correctAnswer\": \"item3\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"Boleh\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Tidak\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Terserah\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page3\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question3\",\r\n     \"title\": \"Suka ngoding ?\",\r\n     \"correctAnswer\": \"item3\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"Tidak\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Ngga\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Lah ?\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page4\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question4\",\r\n     \"title\": \"Oke\",\r\n     \"correctAnswer\": \"item1\",\r\n     \"choices\": [\r\n      \"item1\",\r\n      \"item2\",\r\n      \"item3\"\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page5\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"question5\",\r\n     \"title\": \"Ngantuk gak ?\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"Ngga\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Iya\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Biasa aja\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page6\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"checkbox\",\r\n     \"name\": \"question6\",\r\n     \"choices\": [\r\n      \"item1\",\r\n      \"item2\",\r\n      \"item3\"\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page7\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"dropdown\",\r\n     \"name\": \"question7\",\r\n     \"choices\": [\r\n      \"item1\",\r\n      \"item2\",\r\n      \"item3\"\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"page8\"\r\n  }\r\n ],\r\n \"questionStartIndex\": \"1\",\r\n \"isSinglePage\": true,\r\n \"maxTimeToFinish\": 15,\r\n \"showTimerPanel\": \"top\",\r\n \"showTimerPanelMode\": \"survey\"\r\n}', NULL, '2018-08-30 22:56:36'),
+(2, 2, 2, '{\r\n \"title\": \"Matematika UH 1\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\"\r\n  }\r\n ]\r\n}', '2018-08-30 10:03:44', '2018-08-31 07:30:50'),
+(6, 2, 9, '{\r\n \"title\": \"Soal Matematika 6\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\"\r\n  }\r\n ]\r\n}', '2018-09-01 02:55:20', '2018-09-01 05:48:07'),
+(17, 6, 11, '{}', '2018-09-01 07:02:01', '2018-09-01 07:02:01'),
+(18, 5, 12, '{\r\n \"pages\": [\r\n  {\r\n   \"name\": \"halaman1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"text\",\r\n     \"name\": \"soal1\",\r\n     \"title\": \"Jelaskan apa itu menyimak!\"\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"halaman2\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"checkbox\",\r\n     \"name\": \"soal2\",\r\n     \"title\": \"Apa saja yang termasuk kebutuhan ?\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"HP\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Makan\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Minum\"\r\n      },\r\n      {\r\n       \"value\": \"item4\",\r\n       \"text\": \"Mobil\"\r\n      },\r\n      {\r\n       \"value\": \"item5\",\r\n       \"text\": \"Baju\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"halaman3\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"text\",\r\n     \"name\": \"soal3\",\r\n     \"title\": \"Jelaskan apa itu drama!\"\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"halaman4\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"text\",\r\n     \"name\": \"soal4\",\r\n     \"title\": \"Menurut pendapatmu, apa itu politisasi agama ?\"\r\n    }\r\n   ]\r\n  },\r\n  {\r\n   \"name\": \"halaman5\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"radiogroup\",\r\n     \"name\": \"soal5\",\r\n     \"title\": \"Apa itu kerbau ?\",\r\n     \"choices\": [\r\n      {\r\n       \"value\": \"item1\",\r\n       \"text\": \"Hewan\"\r\n      },\r\n      {\r\n       \"value\": \"item2\",\r\n       \"text\": \"Burung\"\r\n      },\r\n      {\r\n       \"value\": \"item3\",\r\n       \"text\": \"Amfibi\"\r\n      },\r\n      {\r\n       \"value\": \"item4\",\r\n       \"text\": \"Benda\"\r\n      },\r\n      {\r\n       \"value\": \"item5\",\r\n       \"text\": \"Sejenis ular\"\r\n      }\r\n     ]\r\n    }\r\n   ]\r\n  }\r\n ],\r\n \"maxTimeToFinish\": 3600,\r\n \"maxTimeToFinishPage\": 3600,\r\n \"showTimerPanel\": \"top\"\r\n}', '2018-09-01 07:08:29', '2018-09-01 20:12:11');
 
 -- --------------------------------------------------------
 
@@ -136,7 +160,9 @@ CREATE TABLE `classes` (
 
 INSERT INTO `classes` (`id`, `class_key`, `value`, `description`, `status`) VALUES
 (1, 'YuqZs0', 'XII RPL 1', 'a:1:{s:11:\"description\";s:9:\"XII RPL 1\";}', 'active'),
-(2, 'HwzSSd', 'XII RPL 2', 'a:1:{s:11:\"description\";s:9:\"XII RPL 2\";}', 'active');
+(2, 'HwzSSd', 'XII RPL 2', 'a:1:{s:11:\"description\";s:9:\"XII RPL 2\";}', 'active'),
+(3, 'M9SpOc', 'XII RPL 3', 'a:1:{s:11:\"description\";s:9:\"XII RPL 3\";}', 'active'),
+(4, 'KP76cO', 'XII RPL 4', 'a:1:{s:11:\"description\";s:9:\"XII RPL 4\";}', 'active');
 
 -- --------------------------------------------------------
 
@@ -276,7 +302,8 @@ INSERT INTO `users` (`id`, `username`, `name`, `userClass`, `role`, `email`, `pa
 (1, 'aldycavalera', 'Aldy Cavalera', 1, 1, 'aldy04.ac@outlook.com', '$2y$10$2HOOFNRb6jgWcIxVGvDr/OPvbXYj2Mzzzvx6J8SxurwXpY5zQFn2K', 'bUxELwgWG0sgcgWteepQNfjTzjdtmxH3m0YwmSbGGQUpaFQlzsCWkVZK33A1', '2018-08-07 06:29:07', '2018-08-07 06:29:07'),
 (2, 'titaamel', 'Tita Amelia', 2, 2, 'titaamel@gmail.com', '$2y$10$4cg5kIilmsre.1OFR6Ltn.FOAnJ6.VLvI/g7aZNAKPIUaPPPFdYsi', '8vN5s50hQ7yCuQLyLJR0H5bXToDuQ1g2t2f0Q4siqSD0PqFiD1qOdhcrELUW', '2018-08-08 06:47:08', '2018-08-08 06:47:08'),
 (3, 'ahmadrs99', 'Ahmad Ruhiyat S', 1, 1, 'ahmadrs.141200@gmail.com', '$2y$10$P63LQmXOB2Y099YRWbirV.yn1IT6IwezTLKSToOQtuRUZYMDXRy3y', NULL, '2018-08-28 20:07:53', '2018-08-28 20:07:53'),
-(5, 'Nurmayanti22', 'Nurmayanti', 1, 1, 'enomaya22@gmail.com', '$2y$10$1Dm/1oh3uJRZRQQ9Vnj7PuSUtJcF7RsW4ZWCh/ltpyjQu/vO1TB1O', NULL, '2018-08-28 20:27:42', '2018-08-28 20:27:42');
+(5, 'Nurmayanti22', 'Nurmayanti', 1, 1, 'enomaya22@gmail.com', '$2y$10$1Dm/1oh3uJRZRQQ9Vnj7PuSUtJcF7RsW4ZWCh/ltpyjQu/vO1TB1O', NULL, '2018-08-28 20:27:42', '2018-08-28 20:27:42'),
+(6, 'Aditiya', 'Aditiya Malenda', 1, 1, 'aditiamalenda066@gmail.com', '$2y$10$xzHoqu4WutK4TNj.aROBju9DclTGd2SoergzjcpJnT0lVniL2bhEu', 'nEfWBLfVG9HwtXmbMPBJoh23YI2gEtk5aNGMBZwRF1IWKoAnVRCf0iKkJGq1', '2018-08-30 23:10:25', '2018-08-30 23:10:25');
 
 -- --------------------------------------------------------
 
@@ -299,7 +326,8 @@ INSERT INTO `user_class` (`id`, `user_id`, `class_id`, `status`) VALUES
 (1, 1, 1, '1'),
 (2, 2, 2, '1'),
 (3, 3, 1, '1'),
-(5, 5, 1, '1');
+(5, 5, 1, '1'),
+(6, 6, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -321,8 +349,8 @@ CREATE TABLE `user_data` (
 
 INSERT INTO `user_data` (`id`, `user_id`, `currentLoc`, `created_at`, `updated_at`) VALUES
 (4, 2, NULL, '2018-08-24', '2018-08-24 09:35:05'),
-(21, 1, '-6.2087634,106.84559899999999', '2018-08-29', '2018-08-28 20:04:19'),
-(23, 3, '-6.8342693,107.9997492', '2018-08-29', '2018-08-28 20:37:35');
+(23, 3, '-6.8342693,107.9997492', '2018-08-29', '2018-08-28 20:37:35'),
+(24, 1, NULL, '2018-09-02', '2018-09-01 20:15:01');
 
 --
 -- Indexes for dumped tables
@@ -434,31 +462,31 @@ ALTER TABLE `user_data`
 -- AUTO_INCREMENT for table `cbt_hasil`
 --
 ALTER TABLE `cbt_hasil`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cbt_mapel`
 --
 ALTER TABLE `cbt_mapel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `cbt_sesi`
 --
 ALTER TABLE `cbt_sesi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `cbt_soal`
 --
 ALTER TABLE `cbt_soal`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `class_events`
@@ -488,19 +516,19 @@ ALTER TABLE `program_events`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_class`
 --
 ALTER TABLE `user_class`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_data`
 --
 ALTER TABLE `user_data`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -521,14 +549,14 @@ ALTER TABLE `cbt_hasil`
 ALTER TABLE `cbt_sesi`
   ADD CONSTRAINT `cbt_sesi_class_id_foreign` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`),
   ADD CONSTRAINT `cbt_sesi_mapel_id_foreign` FOREIGN KEY (`mapel_id`) REFERENCES `cbt_mapel` (`id`),
-  ADD CONSTRAINT `cbt_sesi_soal_id_foreign` FOREIGN KEY (`soal_id`) REFERENCES `cbt_soal` (`id`);
+  ADD CONSTRAINT `cbt_sesi_soal_id_foreign` FOREIGN KEY (`soal_id`) REFERENCES `cbt_soal` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `cbt_soal`
 --
 ALTER TABLE `cbt_soal`
   ADD CONSTRAINT `cbt_soal_mapel_id_foreign` FOREIGN KEY (`mapel_id`) REFERENCES `cbt_mapel` (`id`),
-  ADD CONSTRAINT `cbt_soal_sesi_id_foreign` FOREIGN KEY (`sesi_id`) REFERENCES `cbt_sesi` (`id`);
+  ADD CONSTRAINT `cbt_soal_sesi_id_foreign` FOREIGN KEY (`sesi_id`) REFERENCES `cbt_sesi` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `class_events`
